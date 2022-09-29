@@ -21,4 +21,27 @@ INSERT INTO villages (name,players_id) VALUES ("mydłowo",1);
 INSERT INTO villages (name,players_id) VALUES ("szamponowo",2);
 INSERT INTO villages (name,players_id) VALUES ("butelkowo",3);
 
- 
+Zapytanie pobierajace zolnierzy pierwszego gracza
+
+
+
+1.
+SELECT resources.name,villages_has_resources.value FROM players
+JOIN villages ON players.id=villages.players_id
+JOIN villages_has_resources ON villages.id=villages_has_resources.villages_id
+JOIN resources ON villages_has_resources.resources_id=resources.id;
+
+2.
+SELECT email,password FROM players where email="adam@gmail.com" and password="123";
+
+3.
+SELECT troops.name FROM players 
+JOIN villages ON players.id=villages.players_id
+JOIN villages_has_troops ON  villages.id=villages_has_troops.villages_id
+JOIN troops ON villages_has_troops.troops_id=troops.id;
+
+4.
+SELECT buildings.name FROM players 
+JOIN villages ON players.id=villages.players_id 
+JOIN buildings_has_villages ON villages.players_id=buildings_has_villages.villages_id 
+JOIN buildings ON buildings_has_villages.villages_id=buildings.id;
